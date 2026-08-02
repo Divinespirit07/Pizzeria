@@ -8,13 +8,15 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { OrderComponent } from './order/order.component';
 import {HttpClientModule} from "@angular/common/http";
+import { BuildpizzaComponent } from './buildpizza/buildpizza.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    OrderComponent
+    OrderComponent,
+    BuildpizzaComponent
   ],
   imports: [
     BrowserModule,
