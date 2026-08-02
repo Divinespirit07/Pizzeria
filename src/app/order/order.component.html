@@ -1,0 +1,29 @@
+<div class="content">
+<div class="product" *ngFor="let pizza of pizzaList">
+
+    <div class="left">
+        <h3>{{pizza.name}}</h3>
+
+        <div class="type {{pizza.type}}"></div>
+
+        <h4>₹{{pizza.price}}</h4>
+    </div>
+
+    <div class="middle">
+        <p>
+                {{pizza.description}}
+        </p>
+
+        <p><b>Ingredients :</b> {{pizza.ingredients}}</p>
+
+        <p><b>Toppings :</b> {{pizza.topping}}</p>
+    </div>
+
+    <div class="right">
+        <img src="{{pizza.image}}" alt="Pizza Image">
+
+        <button>Add to Cart</button>
+    </div>
+
+</div>
+  </div>
