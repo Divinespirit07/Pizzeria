@@ -1,6 +1,9 @@
 # 🍕 Pizzeria
 
-Pizzeria is a responsive pizza ordering web application developed using **Angular 16**.  
+Pizzeria is a responsive pizza ordering web application developed using **Angular 16**. <img src="https://angular.io/assets/images/logos/angular/angular.svg"
+       width="45"
+       align="center"
+       alt="Angular Logo">  
 The application allows users to browse pizzas, add them to a shopping cart, customize their own pizza using different toppings, manage cart quantities, and view the total order cost.
 
 This project was generated with **Angular CLI 16.2.16**.
