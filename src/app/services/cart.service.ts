@@ -9,10 +9,19 @@ export class CartService {
   customPizzaPrice: number = 0;
 
   constructor() {}
+addToCart(item: any) {
 
-  addToCart(item: any) {
+  let existingItem = this.cartItems.find(
+    cartItem => cartItem.id === item.id
+  );
+
+  if (existingItem) {
+    existingItem.quantity++;
+  } else {
+    item.quantity = 1;
     this.cartItems.push(item);
   }
+}
   
   increaseQuantity(index: number) {
   if (!this.cartItems[index].quantity) {
