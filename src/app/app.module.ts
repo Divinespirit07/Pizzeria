@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { OrderComponent } from './order/order.component';
 import {HttpClientModule} from "@angular/common/http";
 import { BuildpizzaComponent } from './buildpizza/buildpizza.component';
+import { CartComponent } from './cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +17,8 @@ import { BuildpizzaComponent } from './buildpizza/buildpizza.component';
     FooterComponent,
     HomeComponent,
     OrderComponent,
-    BuildpizzaComponent
+    BuildpizzaComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

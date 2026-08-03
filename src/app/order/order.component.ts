@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../services/order.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-order',
@@ -8,7 +9,7 @@ import { OrderService } from '../services/order.service';
 })
 export class OrderComponent implements OnInit { 
   pizzaList: any[] = [];
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService,private cartService: CartService) { }
 
   ngOnInit(): void {
     this.getPizza();
@@ -23,5 +24,8 @@ getPizza()
       this.pizzaList = data;
     }
   );
+}
+addToCart(pizza: any) {
+  this.cartService.addToCart(pizza);
 }
 } 

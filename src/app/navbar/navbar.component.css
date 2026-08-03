@@ -2,3 +2,28 @@
 max-height: 55px; 
 padding-left: 15px;
 }
+
+.shopping-cart {
+  background-color: #fcb41a;
+    color: white;
+     margin: 0 20px;
+
+    border: 1px solid #ddd;
+    border-radius: 4px;
+
+    padding: 5px 15px 8px 15px;
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.shopping-cart:hover {
+    background-color: #b58b0f;
+}
+
+.cart_icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+

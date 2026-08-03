@@ -1,0 +1,100 @@
+<div class="content">
+
+  <div class="cart-section">
+
+    <h2 class="title">My Cart</h2>
+
+    <div *ngIf="cartService.getTotal() == 0" class="empty-cart">
+      <h3>Your cart is empty!</h3>
+      <p>Please add some pizzas to your cart.</p>
+    </div>
+
+    <div *ngIf="cartService.getTotal() > 0">
+
+      <table class="card">
+
+        <tr *ngFor="let item of cartItems; let i = index">
+
+          <td>
+            <img [src]="item.image">
+          </td>
+
+          <td class="item-name">
+            <h3>{{ item.name }}</h3>
+            <span>₹{{ item.price }}</span>
+          </td>
+
+          <td class="quantity">
+
+  <button (click)="decreaseQuantity(i)">-</button>
+
+  <span>{{ item.quantity || 1 }}</span>
+
+  <button (click)="increaseQuantity(i)">+</button>
+
+</td>
+
+          <td class="price">
+            ₹{{ item.price }}
+          </td>
+
+          <td>
+            <button class="btn btn-danger" (click)="removeItem(i)">
+              remove
+            </button>
+          </td>
+
+        </tr>
+
+      </table>
+
+    </div>
+
+  </div>
+
+  <div class="summary">
+
+    <h2>Total Amount</h2>
+
+    <div class="summary-row">
+      <span>Pizza</span>
+      <span>₹{{ cartService.getTotal() - cartService.customPizzaPrice }}</span>
+    </div>
+
+    <div class="summary-row">
+      <span>Ingredients</span>
+      <span>₹{{ cartService.customPizzaPrice }}</span>
+    </div>
+
+    <hr>
+
+    <div class="summary-row total">
+      <span>Total</span>
+      <span>₹{{ cartService.getTotal() }}</span>
+    </div>
+
+    <button *ngIf="cartService.getTotal() > 0" class="pay-btn" (click)="pay()">
+      Pay
+    </button>
+<button
+  class="clear-btn " (click)="clearCart()" *ngIf="cartService.getTotal() > 0">
+  Clear Cart
+</button>
+  </div>
+
+</div>
+<div class="splash" *ngIf="paymentDone">
+
+  <div class="splash-box">
+    <div class="success-icon"><img  src="assets/check-mark.png" alt="Success"></div>
+
+    <h2>Payment Successful!</h2>
+
+    <p>Your pizza order has been placed successfully</p>
+
+    <button class="btn btn-success" routerLink="/cart"  (click)="clearCart()">
+      Continue
+    </button>
+  </div>
+
+</div>

@@ -4,6 +4,9 @@
   Customize your pizza by choosing ingredients from the list given below
 </p>
 
+<p><span *ngIf="!hasPizza" style="color: red; font-weight: bold;">(Please Select a pizza before proceeding)</span></p>
+
+
 <table>
   <tr *ngFor="let topping of buildpizzaList">
 
@@ -14,19 +17,20 @@
     <td>
       <b>{{ topping.tname }}</b>
       &nbsp;&nbsp;
-      ₹{{ topping.price }}.00
+    <span style='font-weight: bold'> ₹{{ topping.price }}.00</span>  
     </td>
 
-    <td>
-     <input type="checkbox" (change)="topping.selected" (change)="calculateTotalPrice($event, topping.price)">
-      <span>Add</span>
+    <td *ngIf="hasPizza">
+     <input type="checkbox" (change)="topping.selected" (change)="calculateTotalPrice($event, topping.price,topping.tname)">
+      <span style=" color: orange;">&nbsp; Add</span>
     </td>
 
   </tr>
+
 </table>
-<div class="calculate">
+<div *ngIf="hasPizza" class="calculate">
 <h2>Total Cost : ₹{{ totalPrice }}</h2>
 </div>
 
-<button>Build Ur Pizza</button>
+<button *ngIf="hasPizza" (click)="buildPizza()" class="build_btn" routerLink="/cart" routerLinkActive="active">Build Ur Pizza</button>
 </div>
