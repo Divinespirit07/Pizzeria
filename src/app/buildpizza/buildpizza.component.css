@@ -1,9 +1,9 @@
-
 .content {
-   
     margin: 30px auto;
     line-height: 1.6;
+    padding-bottom: 80px;
 }
+
 table {
     border-collapse: collapse;
     width: 600px;
@@ -21,31 +21,109 @@ td img {
     object-fit: contain;
 }
 
-
-
 .calculate {
     width: 600px;
     margin: 10px auto;
     color: darkblue;
-    
 }
-   
 
 p {
     margin: 50px;
     text-align: center;
 }
-.build_btn
-{
-     display: block;
+
+.build_btn {
+    display: block;
     margin: 15px auto 60px auto;
     padding: 8px 15px;
-
     background-color: black;
     color: orange;
     border: 2px solid orange;
     border-radius: 3px;
-
     font-size: 18px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+
+    .content {
+        width: 95%;
+        margin: 0 auto;
+        padding-top: 130px;
+        padding-bottom: 100px;
+    }
+
+    table {
+        width: 100%;
+        margin: 15px auto;
+    }
+
+    td {
+        padding: 8px 10px;
+    }
+
+    td img {
+        width: 60px;
+        height: 45px;
+    }
+
+    .calculate {
+        width: 100%;
+        margin: 10px auto;
+        text-align: center;
+    }
+
+    .calculate h2 {
+        font-size: 22px;
+    }
+
+    p {
+        margin: 30px 15px;
+    }
+
+    .build_btn {
+        margin: 15px auto 30px;
+        font-size: 16px;
+        padding: 8px 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .content {
+        width: 96%;
+        margin: 0 auto;
+        padding-top: 140px;
+        padding-bottom: 120px;
+    }
+
+    table {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    td {
+        padding: 6px;
+    }
+
+    td img {
+        width: 50px;
+        height: 40px;
+    }
+
+    .calculate h2 {
+        font-size: 19px;
+    }
+
+    p {
+        margin: 20px 10px;
+        font-size: 14px;
+    }
+
+    .build_btn {
+        width: 90%;
+        margin: 15px auto 20px;
+        font-size: 15px;
+        padding: 10px;
+    }
 }

@@ -1,7 +1,22 @@
-   .footer {
+.footer {
     background-color: rgb(252, 252, 252);
     color: #ffc107;
     text-align: center;
     padding-top: 2px;
     padding-bottom: 1px;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .footer {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .footer {
+        padding: 5px;
+        font-size: 12px;
+    }
 }
