@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../services/cart.service';
+import { CartService, CartItem } from '../services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -8,8 +8,8 @@ import { CartService } from '../services/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  cartItems: any[] = [];
- paymentDone: boolean = false;
+  cartItems: CartItem[] = [];
+  paymentDone = false;
 
   constructor(public cartService: CartService) {}
 
@@ -20,6 +20,7 @@ export class CartComponent implements OnInit {
   removeItem(index: number) {
     this.cartService.removeFromCart(index);
   }
+
   increaseQuantity(index: number) {
     this.cartService.increaseQuantity(index);
   }
@@ -27,12 +28,13 @@ export class CartComponent implements OnInit {
   decreaseQuantity(index: number) {
     this.cartService.decreaseQuantity(index);
   }
-clearCart() {
-  this.cartService.clearCart();
-  this.paymentDone = false;
-}
 
-pay() {
-  this.paymentDone = true;
-}
+  clearCart() {
+    this.cartService.clearCart();
+    this.paymentDone = false;
+  }
+
+  pay() {
+    this.paymentDone = true;
+  }
 }

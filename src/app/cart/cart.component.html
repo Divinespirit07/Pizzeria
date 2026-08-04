@@ -4,7 +4,7 @@
 
     <h2 class="title">My Cart</h2>
 
-    <div *ngIf="cartService.getTotal() == 0" class="empty-cart">
+    <div *ngIf="cartService.getTotal() === 0" class="empty-cart">
       <h3>Your cart is empty!</h3>
       <p>Please add some pizzas to your cart.</p>
     </div>
@@ -16,7 +16,7 @@
         <tr *ngFor="let item of cartItems; let i = index">
 
           <td>
-            <img [src]="item.image">
+            <img [src]="item.image" alt="{{ item.name }}" width="70">
           </td>
 
           <td class="item-name">

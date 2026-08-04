@@ -1,36 +1,52 @@
 import { Injectable } from '@angular/core';
 
+export interface CartItem {
+  id: string;
+  type: string;
+  price: number;
+  name: string;
+  image: string;
+  description: string;
+  ingredients: string[];
+  topping: string[];
+  quantity?: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  cartItems: any[] = [];
-  customPizzaPrice: number = 0;
+  cartItems: CartItem[] = [];
+  customPizzaPrice = 0;
 
-  constructor() {}
+  addToCart(item: CartItem) {
 
-  addToCart(item: any) {
-    this.cartItems.push(item);
+    const existingItem = this.cartItems.find(
+      cartItem => cartItem.id === item.id
+    );
+
+    if (existingItem) {
+      existingItem.quantity = (existingItem.quantity ?? 0) + 1;
+    } else {
+      item.quantity = 1;
+      this.cartItems.push(item);
+    }
   }
-  
+
   increaseQuantity(index: number) {
-  if (!this.cartItems[index].quantity) {
-    this.cartItems[index].quantity = 1;
+    const item = this.cartItems[index];
+
+    item.quantity = (item.quantity ?? 0) + 1;
   }
 
-  this.cartItems[index].quantity++;
-}
+  decreaseQuantity(index: number) {
+    const item = this.cartItems[index];
 
-decreaseQuantity(index: number) {
-  if (!this.cartItems[index].quantity) {
-    this.cartItems[index].quantity = 1;
+    if ((item.quantity ?? 0) > 0) {
+      item.quantity = (item.quantity ?? 0) - 1;
+    }
   }
-
-  if (this.cartItems[index].quantity > 0) {
-    this.cartItems[index].quantity--;
-  }
-}
 
   getCartItems() {
     return this.cartItems;
@@ -40,32 +56,31 @@ decreaseQuantity(index: number) {
     this.cartItems.splice(index, 1);
 
     if (this.cartItems.length === 0) {
-    this.customPizzaPrice = 0;
-  }
+      this.customPizzaPrice = 0;
+    }
   }
 
   clearCart() {
-  this.cartItems.length = 0;
-  this.customPizzaPrice = 0;
-}
+    this.cartItems.length = 0;
+    this.customPizzaPrice = 0;
+  }
 
-
-
-hasPizza(): boolean {
+  hasPizza(): boolean {
     return this.cartItems.length > 0;
   }
 
-addCustomPizzaPrice(price: number) {
-  this.customPizzaPrice = price;
-}
+  addCustomPizzaPrice(price: number) {
+    this.customPizzaPrice = price;
+  }
+
   getTotal() {
-    let total =0;
-    
-    for (let item of this.cartItems) 
-      {
-       total += Number(item.price) *  (item.quantity || 1);
-      }
-        total += this.customPizzaPrice;
+    let total = 0;
+
+    for (const item of this.cartItems) {
+      total += Number(item.price) * (item.quantity ?? 0);
+    }
+
+    total += this.customPizzaPrice;
 
     return total;
   }

@@ -11,17 +11,17 @@
   <tr *ngFor="let topping of buildpizzaList">
 
     <td>
-      <img [src]="topping.image" width="70">
+      <img [src]="topping.image" width="70" alt="topping.tname">
     </td>
 
     <td>
-      <b>{{ topping.tname }}</b>
+      <b>{{ topping.tname }}</b>ng 
       &nbsp;&nbsp;
     <span style='font-weight: bold'> ₹{{ topping.price }}.00</span>  
     </td>
 
     <td *ngIf="hasPizza">
-     <input type="checkbox" (change)="topping.selected" (change)="calculateTotalPrice($event, topping.price,topping.tname)">
+     <input type="checkbox"  (change)="calculateTotalPrice($event, topping.price)">
       <span style=" color: orange;">&nbsp; Add</span>
     </td>
 

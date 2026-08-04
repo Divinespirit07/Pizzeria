@@ -1,16 +1,30 @@
 import { Component,OnInit} from '@angular/core';
 import { BuildpizzaService } from '../services/buildpizza.service';
 import { CartService } from '../services/cart.service';
+
+export interface build{
+  id: string;
+  type: string;
+  price: number;
+  tname: string;
+  image: string;
+  description: string;
+  ingredients: string[];
+  topping: string[];
+  quantity?: number;
+}
 @Component({
   selector: 'app-buildpizza',
   templateUrl: './buildpizza.component.html',
   styleUrls: ['./buildpizza.component.css']
 })
 
+
 export class BuildpizzaComponent implements OnInit {
-  buildpizzaList:any[]=[];
-  totalPrice:number=0;
-  hasPizza: boolean = false;
+  
+  buildpizzaList:build[]=[];
+  totalPrice=0;
+  hasPizza = false;
 
 
   constructor(private buildpizzaService:BuildpizzaService,private cartService: CartService) { }
@@ -22,7 +36,7 @@ export class BuildpizzaComponent implements OnInit {
   getBuildPizza()
   {
     this.buildpizzaService.pizzabuild().subscribe(
-    (data:any[]) =>
+    (data:build[]) =>
     {
       this.buildpizzaList= data;
     }
@@ -33,9 +47,9 @@ export class BuildpizzaComponent implements OnInit {
     }
   
   
-    calculateTotalPrice(event:any,price:number,topping:string)
+    calculateTotalPrice(event:Event,price:number)
   {
-    if(event.target.checked)
+    if(event.target)
     {
       this.totalPrice+=price;
     
